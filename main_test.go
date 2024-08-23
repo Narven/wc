@@ -11,9 +11,19 @@ func TestCountWords(t *testing.T) {
 
 	exp := 4
 
-	res := count(b)
+	res := count(b, false)
 
 	if res != exp {
 		t.Errorf("Expected %d, got %d instead.\n", exp, res)
+	}
+}
+
+func TestCountLines(t *testing.T) {
+	b := bytes.NewBufferString("word1 word2 word3\nline2\nline3 word30")
+	exp := 3
+	got := count(b, true)
+
+	if got != exp {
+		t.Errorf("Expected %d, got %d instead.\n", exp, got)
 	}
 }
